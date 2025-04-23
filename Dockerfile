@@ -1,0 +1,1 @@
+FROM drupal:10.2-apache

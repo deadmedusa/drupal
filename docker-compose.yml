@@ -1,0 +1,21 @@
+services:
+  drupal:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal_password
+    volumes:
+      - db_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  db_data:
